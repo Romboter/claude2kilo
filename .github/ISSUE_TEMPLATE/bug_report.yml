@@ -1,0 +1,113 @@
+---
+name: Bug Report
+description: Report a bug or issue with the converter
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please fill out this template
+        to help us understand and resolve the issue.
+
+        **Important**: This template is for technical bugs only.
+        For questions, discussions, or general feedback, please use
+        GitHub Discussions instead.
+
+  - type: checkboxes
+    id: preliminary-checks
+    attributes:
+      label: Preliminary Checks
+      description: Please confirm you have completed these steps
+      options:
+        - label: I have read the [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+          required: true
+        - label: >-
+            I have searched existing issues to ensure this is not a duplicate
+          required: true
+        - label: This report contains only technical information about a bug
+          required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Which part of the converter is experiencing the issue?
+      options:
+        - YAML parsing/frontmatter extraction
+        - Content analysis and "when to use" generation
+        - Icon selection logic
+        - Tool group assignment
+        - YAML sanitization
+        - File operations and output generation
+        - CLI interface and options
+        - Diagnostic reporting
+        - Cross-platform compatibility
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe the unexpected behavior...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Run converter with command: `./claude-to-kilo-converter -input ...`
+        2. Use input file with content: ...
+        3. Observe output: ...
+        4. See error: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen
+      placeholder: The converter should have...
+    validations:
+      required: true
+
+  - type: textarea
+    id: sample-input
+    attributes:
+      label: Sample Input File
+      description: Please provide the Claude agent file that causes the issue (or a minimal example)
+      placeholder: |
+        ---
+        name: example-agent
+        description: Example description
+        ---
+        
+        Agent instructions here...
+      render: markdown
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Information about your environment
+      placeholder: |
+        - OS: [e.g., Windows 11, macOS 14, Ubuntu 22.04]
+        - Go version: [e.g., 1.21.5]
+        - Converter version/commit: [e.g., latest main branch]
+        - Command used: [exact command that triggered the bug]
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, or examples
+      placeholder: Add any other context about the problem here...

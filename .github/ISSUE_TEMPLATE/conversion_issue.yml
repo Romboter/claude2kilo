@@ -1,0 +1,136 @@
+---
+name: Conversion Issue
+description: Report problems with specific Claude agent file conversions
+title: "[CONVERSION] "
+labels: ["conversion-issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when you have a specific Claude agent file
+        that isn't converting properly or produces unexpected results.
+
+        **Important**: This is for conversion-specific issues. For general
+        bugs with the converter itself, use the "Bug Report" template.
+
+  - type: checkboxes
+    id: preliminary-checks
+    attributes:
+      label: Preliminary Checks
+      description: Please confirm you have completed these steps
+      options:
+        - label: I have read the [Code of Conduct](.github/CODE_OF_CONDUCT.md)
+          required: true
+        - label: >-
+            I have searched existing issues to ensure this is not a duplicate
+          required: true
+        - label: I have tried the latest version of the converter
+          required: true
+        - label: I have checked the diagnostic report for additional details
+          required: false
+
+  - type: input
+    id: agent-name
+    attributes:
+      label: Agent Name
+      description: What is the name of the Claude agent that's having conversion issues?
+      placeholder: e.g., python-pro, frontend-developer, etc.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of Conversion Issue
+      description: What kind of problem are you experiencing?
+      options:
+        - YAML parsing error
+        - Missing or incorrect fields in output
+        - Wrong tool groups assigned
+        - Incorrect icon selection
+        - Poor "when to use" description
+        - YAML sanitization not working
+        - File structure not preserved
+        - Encoding or line ending issues
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: input-file
+    attributes:
+      label: Input Claude Agent File
+      description: >-
+        Please provide the complete content of your Claude agent file
+        (or a minimal example that reproduces the issue)
+      placeholder: |
+        ---
+        name: example-agent
+        description: Example description that causes issues
+        model: opus
+        ---
+        
+        Agent instructions here...
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-output
+    attributes:
+      label: Actual Output
+      description: What output did the converter produce?
+      placeholder: |
+        Paste the generated YAML or error message here...
+      render: yaml
+
+  - type: textarea
+    id: expected-output
+    attributes:
+      label: Expected Output
+      description: What output did you expect?
+      placeholder: |
+        Describe what you expected to see, or provide the corrected YAML...
+    validations:
+      required: true
+
+  - type: textarea
+    id: command-used
+    attributes:
+      label: Command Used
+      description: What exact command did you run?
+      placeholder: |
+        ./claude-to-kilo-converter -input my-agent.md -output ./output/
+      render: bash
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostic-info
+    attributes:
+      label: Diagnostic Information
+      description: >-
+        If a diagnostic report was generated, please include relevant
+        sections or the full report
+      placeholder: |
+        Paste relevant sections from conversion-diagnostic-report.md...
+      render: markdown
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround (if any)
+      description: Have you found any way to work around this issue?
+      placeholder: |
+        I was able to fix it by manually editing the YAML frontmatter...
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+      placeholder: |
+        - This happens with multiple similar agents
+        - The issue started after updating from version X
+        - Related to specific YAML patterns
+        - etc.

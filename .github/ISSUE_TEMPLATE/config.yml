@@ -1,0 +1,15 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Discussions
+    url: https://github.com/Romboter/claude2kilo/discussions
+    about: For questions, brainstorming, and general discussions about the converter
+  - name: Community Guidelines
+    url: https://github.com/Romboter/claude2kilo/blob/main/.github/CODE_OF_CONDUCT.md
+    about: Read our Code of Conduct and community standards
+  - name: Contributing Guide
+    url: https://github.com/Romboter/claude2kilo/blob/main/.github/CONTRIBUTING.md
+    about: Learn how to contribute effectively to this project
+  - name: Documentation
+    url: https://github.com/Romboter/claude2kilo/blob/main/README.md
+    about: Complete documentation and usage examples
