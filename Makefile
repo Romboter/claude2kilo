@@ -18,17 +18,17 @@ clean:
 # Build for Windows
 .PHONY: build-windows
 build-windows:
-	GOOS=windows GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME).exe $(SRC)
+	GOOS=windows GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME).exe .
 
 # Build for macOS
 .PHONY: build-macos
 build-macos:
-	GOOS=darwin GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME)-darwin $(SRC)
+	GOOS=darwin GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME)-darwin .
 
 # Build for Linux
 .PHONY: build-linux
 build-linux:
-	GOOS=linux GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME)-linux $(SRC)
+	GOOS=linux GOARCH=amd64 go build -o $(BIN_DIR)/$(BINARY_NAME)-linux .
 
 # Build all platforms
 .PHONY: build

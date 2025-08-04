@@ -1,0 +1,50 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
+
+permissions:
+  contents: write  # Required to create releases and upload assets
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+        
+    - name: Install make
+      run: sudo apt-get update && sudo apt-get install -y make
+      
+    - name: Build binaries
+      run: make all
+      
+    - name: Verify binaries were created
+      run: |
+        echo "Checking for binaries..."
+        ls -la bin/
+        test -f bin/claude2kilo.exe
+        test -f bin/claude2kilo-darwin
+        test -f bin/claude2kilo-linux
+        echo "All binaries verified!"
+      
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          bin/claude2kilo.exe
+          bin/claude2kilo-darwin
+          bin/claude2kilo-linux
+        generate_release_notes: true
+        draft: true  # Creates draft release for review before publishing
+        prerelease: ${{ contains(github.ref_name, '-') }}  # Auto-detect pre-releases (v1.0.0-beta)
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
